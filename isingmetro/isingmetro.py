@@ -28,7 +28,7 @@ def grid_maker(nrows,ncols):
 
   for i in range(nrows):
     for j in range(ncols):
-      grid_points[i,j] = rn.choice([-1/2,1/2])
+      grid_points[i,j] = rn.choice([-1,1])
 
   return grid_points
 
