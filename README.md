@@ -76,5 +76,5 @@ print("Energy with PBC:", energy_pbc)
 If you'd like to contribute to improving this repository, feel free to submit a pull request.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the Apache license.
 
