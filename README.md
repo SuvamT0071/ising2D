@@ -23,7 +23,10 @@ Alternatively, install dependencies manually:
 ```bash
 pip install numpy matplotlib tqdm
 ```
-
+To install isingmetro, use pip:
+```bash
+pip install isingmetro
+```
 ## Usage
 
 ### 1. Generate a Random Grid
