@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='isingmetro',
     version='0.1.0',
-    packages=find_packages(), 
+    packages = ['isingmetro'], 
     install_requires=['numpy', 'matplotlib', 'tqdm'],
     author='SuvamT0071',
     author_email='profsuvam@gmail.com',
