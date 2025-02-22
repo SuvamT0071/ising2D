@@ -10,9 +10,16 @@ This repository contains a Python implementation of the Ising model simulation u
 - Compute specific heat, mean energy, magnetization, and magnetic susceptibility
 - Support for periodic boundary conditions (PBC)
 
-## Dependencies
-Ensure you have the following Python libraries installed:
+## Installation
+Clone the repository and install the required dependencies:
 
+```bash
+git clone https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
+cd isingmetro
+pip install -r requirements.txt
+```
+
+Alternatively, install dependencies manually:
 ```bash
 pip install numpy matplotlib tqdm
 ```
