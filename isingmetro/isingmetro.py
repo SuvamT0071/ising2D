@@ -574,6 +574,33 @@ def mag_susceptibility_PBC(grid, temp_range):
     print("****************************************************** \n")
     return susceptibility_values 
 
+def grid_maker_tri(nrows,ncols):
+  '''
+  This function generates a random classical triangular grid of any size
+
+  Parameters:
+
+  - nrows: (integer) Specify the number of rows
+  - ncols: (integer) Specify the number of columns
+
+  Returns:
+
+  The function returns your desired random grid of any size.
+
+  '''
+  if not isinstance(nrows, int) or nrows <= 0:
+    raise ValueError("nrows must be a positive integer")
+  if not isinstance(ncols, int) or ncols <= 0:
+    raise ValueError("nrows must be a positive integer")
+
+  grid_points = np.zeros((nrows,ncols))
+
+  for i in range(nrows):
+    for j in range(ncols):
+      grid_points[i,j] = rn.choice([-1/2,1/2])
+
+  return grid_points
+
 def compute_energy_triangular(grid):
     """
     This function calculates the energy of a 2D triangular lattice with classical spins
