@@ -9,6 +9,8 @@ This repository contains a Python implementation of the Ising model simulation u
 - Simulate spin dynamics using the Metropolis-Hastings algorithm
 - Compute specific heat, mean energy, magnetization, and magnetic susceptibility
 - Support for periodic boundary conditions (PBC)
+- Support for triangular and square lattices
+- Visualise frustrated magnetism
 
 ## Installation
 Clone the repository and install the required dependencies:
