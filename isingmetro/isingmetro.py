@@ -685,7 +685,8 @@ def specific_heat_triangular(grid, temp_range, nsamples=10000, mag = 'f'):
     Parameters:
     - grid: Initial 2D Ising spin configuration.
     - temp_range: List of temperatures.
-    - nsamples: Number of Monte Carlo samples per temperature.
+    - nsamples: How many times would you like to sample the configuration at a given temperature
+                (default is 10000).
     - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
            (By default it is set in ferromagnetic('f') state)
 
@@ -758,7 +759,8 @@ def mag_susceptibility_triangular(grid, temp_range, mag = 'f'):
     Parameters:
     - grid: Takes a 2D grid of any size.
     - temp_range: A list of temperatures at which susceptibility is calculated.
-
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
     Returns:
     - A list of calculated magnetic susceptibilities.
     '''
