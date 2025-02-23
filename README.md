@@ -91,6 +91,10 @@ print("Energy with PBC:", energy_pbc)
 ## Contributing
 If you'd like to contribute to improving this repository, feel free to submit a pull request.
 
+## Credit
+
+This code was written by Suvam Tripathy, a Masters' of Physics student(2023-2025) of Indian Institute of Technology, Madras, as a part of a mini-project.
+
 ## License
 This project is licensed under the MIT license.
 
