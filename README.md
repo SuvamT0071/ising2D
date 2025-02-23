@@ -29,6 +29,10 @@ To install isingmetro, use pip:
 ```bash
 pip install isingmetro
 ```
+or
+```
+pip install git+https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
+```
 ## Usage
 
 ### 1. Generate a Random Grid
