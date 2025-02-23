@@ -597,33 +597,71 @@ def grid_maker_tri(nrows,ncols):
 
   for i in range(nrows):
     for j in range(ncols):
+      grid_points[i,j] = rn.choice([-1,1])
+
+  return grid_points
+
+def grid_maker_tri(nrows,ncols):
+  '''
+  This function generates a random classical triangular grid of any size
+
+  Parameters:
+
+  - nrows: (integer) Specify the number of rows
+  - ncols: (integer) Specify the number of columns
+
+  Returns:
+
+  The function returns your desired random grid of any size.
+
+  '''
+  if not isinstance(nrows, int) or nrows <= 0:
+    raise ValueError("nrows must be a positive integer")
+  if not isinstance(ncols, int) or ncols <= 0:
+    raise ValueError("nrows must be a positive integer")
+
+  grid_points = np.zeros((nrows,ncols))
+
+  for i in range(nrows):
+    for j in range(ncols):
       grid_points[i,j] = rn.choice([-1/2,1/2])
 
   return grid_points
 
-def compute_energy_triangular(grid):
+def compute_energy_triangular(grid, mag = 'f'):
     """
     This function calculates the energy of a 2D triangular lattice with classical spins
     (Implements periodic boundary conditions).
 
     Parameters:
     - grid: input a 2D grid
-
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
     Returns:
     - Energy of the lattice
     """
     energy = 0
     nrows, ncols = grid.shape
 
-    for k in range(nrows):
-        for l in range(ncols):
-            for dk, dl in [[0, -1], [0, 1], [-1, 0], [1, 0],[1,-1],[-1,1]]:
-                ni, nj = (k + dk) % nrows, (l + dl) % ncols #implementation of periodic boundary conditions
-                energy += -grid[k, l] * grid[ni, nj]
+    if mag == 'f':
+        
+        for k in range(nrows):
+            for l in range(ncols):
+                for dk, dl in [[0, -1], [0, 1], [-1, 0], [1, 0],[1,-1],[-1,1]]:
+                    ni, nj = (k + dk) % nrows, (l + dl) % ncols #implementation of periodic boundary conditions
+                    energy += -grid[k, l] * grid[ni, nj]
 
+    elif mag == 'af':
+        
+        for k in range(nrows):
+            for l in range(ncols):
+                for dk, dl in [[0, -1], [0, 1], [-1, 0], [1, 0],[1,-1],[-1,1]]:
+                    ni, nj = (k + dk) % nrows, (l + dl) % ncols #implementation of periodic boundary conditions
+                    energy += grid[k, l] * grid[ni, nj]
+    
     return energy / 2
 
-def ising_model_triangular(nsamples, temperature, grid_points):
+def ising_model_triangular(nsamples, temperature, grid_points, mag = 'f'):
     """
     This function runs the Ising model simulation using Metropolis-Hastings for a 2D triangular lattice.
     (Implements periodic boundary condition)
@@ -632,6 +670,8 @@ def ising_model_triangular(nsamples, temperature, grid_points):
     - nsamples: Number of samples to be taken.
     - temperature: Temperature at which the system is simulated.
     - grid_points: Takes a grid of any size.
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
 
     Returns:
     - saved_energies: List of sampled energies by burning the first 20% of the sampled energies.
@@ -649,8 +689,8 @@ def ising_model_triangular(nsamples, temperature, grid_points):
         temp_grid = np.copy(grid_points)
         temp_grid[i, j] = -temp_grid[i, j]
 
-        energy = compute_energy_triangular(grid_points)
-        temp_energy = compute_energy_triangular(temp_grid)
+        energy = compute_energy_triangular(grid_points, mag)
+        temp_energy = compute_energy_triangular(temp_grid, mag)
         energy_diff = temp_energy - energy
 
         p_acceptance = np.exp(-energy_diff / temperature) if temperature > 0 else 0
@@ -663,7 +703,7 @@ def ising_model_triangular(nsamples, temperature, grid_points):
 
     return saved_energies[int(nsamples/5):], grid_points
 
-def specific_heat_triangular(grid, temp_range, nsamples=10000):
+def specific_heat_triangular(grid, temp_range, nsamples=10000, mag = 'f'):
     """
     This function calculates and gives a list of specific heat for a lattice across a given temperature range
    (Implements periodic boundary condition)
@@ -673,6 +713,8 @@ def specific_heat_triangular(grid, temp_range, nsamples=10000):
     - grid: Initial 2D Ising spin configuration.
     - temp_range: List of temperatures.
     - nsamples: Number of Monte Carlo samples per temperature.
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
 
     Returns:
     - Cv: List of specific heat values.
@@ -685,7 +727,7 @@ def specific_heat_triangular(grid, temp_range, nsamples=10000):
     print("****************************************************** \n")
 
     for t in tqdm(temp_range, desc='collecting energies', unit='iterations'):
-        energy, grid = ising_model_triangular(nsamples, temperature=t, grid_points=grid)
+        energy, grid = ising_model_triangular(nsamples, temperature=t, grid_points=grid, mag=mag)
         energy_collections.append(energy)
 
     print("******************************************************")
@@ -709,7 +751,7 @@ def specific_heat_triangular(grid, temp_range, nsamples=10000):
 
     return Cv, updated_Cv
 
-def magnetize_triangular(grid, temp_range, nsamples=10000):
+def magnetize_triangular(grid, temp_range, nsamples=10000, mag = 'f'):
     '''
     This function calculates and gives a list of magnetization for a triangular lattice across a given temperature range
     (Implements periodic boundary condition)
@@ -720,6 +762,8 @@ def magnetize_triangular(grid, temp_range, nsamples=10000):
     - temp_range: Takes a list of temperature for which magnetic susceptibility is to be calculated
     - nsamples: How many times would you like to sample the configuration at a given temperature
                 (default is 10000).
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
     Returns:
 
     - magnetization: A list of magnetization values across all temperatures.
@@ -729,12 +773,12 @@ def magnetize_triangular(grid, temp_range, nsamples=10000):
     N = nrows * ncols
 
     for t in tqdm(temp_range, desc='collecting magnetization', unit='temperature'):
-        energy, grid = ising_model_triangular(nsamples=10000, temperature=t, grid_points=grid)
+        energy, grid = ising_model_triangular(nsamples=10000, temperature=t, grid_points=grid, mag=mag)
         magnetization.append(np.abs(np.sum(grid)) / N)
 
     return magnetization
 
-def mag_susceptibility_triangular(grid, temp_range):
+def mag_susceptibility_triangular(grid, temp_range, mag = 'f'):
     '''
     This function calculates the magnetic susceptibility for a triangular lattice across a given temperature range.
     (Implements periodic boundary condition)
@@ -756,7 +800,7 @@ def mag_susceptibility_triangular(grid, temp_range):
         magnetizations = []
 
         for _ in range(10000):  
-            energy, grid = ising_model_triangular(nsamples=1, temperature=T, grid_points=grid)  
+            energy, grid = ising_model_triangular(nsamples=1, temperature=T, grid_points=grid, mag=mag)  
             magnetization = np.sum(grid)
             magnetizations.append(magnetization)
     
@@ -770,7 +814,7 @@ def mag_susceptibility_triangular(grid, temp_range):
     print("****************************************************** \n")
     return susceptibility_values    
 
-def mean_energy_triangular(grid, temp_range, nsamples=10000):
+def mean_energy_triangular(grid, temp_range, nsamples=10000, mag='f'):
     '''
     This function calculates and gives a list of mean energy for a 2D triangular lattice across a given temperature range
     (Implements periodic boundary conditions)
@@ -781,6 +825,8 @@ def mean_energy_triangular(grid, temp_range, nsamples=10000):
     - temp_range: Takes a list of temperatures for which mean energy is to be calculated.
     - nsamples: How many times would you like to sample the configuration at a given temperature
                 (default is 10000).
+    - mag: 'f' or 'af' to select between ferromagnetic calculation or anti-ferromagnetic calculations respectively
+           (By default it is set in ferromagnetic('f') state)
     Returns:
 
     - mean_energies: A list of calculated mean energy.
@@ -793,7 +839,7 @@ def mean_energy_triangular(grid, temp_range, nsamples=10000):
     print("****************************************************** \n")
 
     for t in tqdm(temp_range, desc='collecting energies', unit='temperature'):
-        energy, grid = ising_model_triangular(nsamples, temperature=t, grid_points=grid)
+        energy, grid = ising_model_triangular(nsamples, temperature=t, grid_points=grid, mag=mag)
         energy_collections.append(energy)
 
     mean_energies = []
