@@ -17,7 +17,7 @@ Clone the repository and install the required dependencies:
 
 ```bash
 git clone https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
-cd isingmetro
+cd Metropolis-Hastings-in-CMP/isingmetro
 pip install -r requirements.txt
 ```
 
