@@ -16,8 +16,8 @@ This repository contains a Python implementation of the Ising model simulation u
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
-cd Metropolis-Hastings-in-CMP/isingmetro
+git clone https://github.com/SuvamT0071/ising2D.git
+cd ising2D/isingmetro
 pip install -r requirements.txt
 ```
 
@@ -28,7 +28,7 @@ pip install numpy matplotlib tqdm
 To install isingmetro, use pip:
 
 ```
-pip install git+https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
+pip install git+https://github.com/SuvamT0071/ising2D.git
 ```
 ## Usage
 
