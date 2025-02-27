@@ -90,6 +90,8 @@ print("Energy with PBC:", energy_pbc)
 ## Some plots from the code:
 ![square ferro](https://github.com/user-attachments/assets/b81a2e45-a800-4d24-94a6-bb2ea7a3e738)
 ![square anti-ferro](https://github.com/user-attachments/assets/8c184273-d886-44f8-b0b6-a06e45f716e6)
+![frustrated](https://github.com/user-attachments/assets/7984b792-291e-4aef-9081-026e203cef9d)
+
 
 ## Contributing
 If you'd like to contribute to improving this repository, feel free to submit a pull request.
