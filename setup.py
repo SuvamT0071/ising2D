@@ -10,7 +10,7 @@ setup(
     description='Ising Model Simulation using Metropolis-Hastings Algorithm',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP',
+    url='https://github.com/SuvamT0071/ising2D.git',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
