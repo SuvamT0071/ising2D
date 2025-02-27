@@ -88,6 +88,8 @@ print("Energy with PBC:", energy_pbc)
 ![square ferro](https://github.com/user-attachments/assets/b81a2e45-a800-4d24-94a6-bb2ea7a3e738)
 ![square anti-ferro](https://github.com/user-attachments/assets/8c184273-d886-44f8-b0b6-a06e45f716e6)
 ![frustrated](https://github.com/user-attachments/assets/7984b792-291e-4aef-9081-026e203cef9d)
+![triangular anti-ferro](https://github.com/user-attachments/assets/d06cb7d9-9ab4-4e1c-aea9-b0402e29f65d)
+![triangular ferro](https://github.com/user-attachments/assets/108ce2d9-cafe-4459-9266-3427dd4e4000)
 
 
 ## Contributing
