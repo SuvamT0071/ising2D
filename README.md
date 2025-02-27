@@ -26,10 +26,7 @@ Alternatively, install dependencies manually:
 pip install numpy matplotlib tqdm
 ```
 To install isingmetro, use pip:
-```bash
-pip install isingmetro
-```
-or
+
 ```
 pip install git+https://github.com/SuvamT0071/Metropolis-Hastings-in-CMP.git
 ```
