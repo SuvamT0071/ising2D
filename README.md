@@ -1,4 +1,5 @@
 # Ising Model Simulation using Metropolis-Hastings Algorithm
+![Gemini_Generated_Image_w752xtw752xtw752](https://github.com/user-attachments/assets/9d6084d8-462b-4940-b3f3-48e50c3b0414)
 
 ## Overview
 This repository contains a Python implementation of the Ising model simulation using the Metropolis-Hastings algorithm. The code allows for studying phase transitions in magnetic systems, computing specific heat, mean energy, magnetization, and magnetic susceptibility for a given lattice.
