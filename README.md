@@ -12,6 +12,7 @@ This repository contains a Python implementation of the Ising model simulation u
 - Support for periodic boundary conditions (PBC)
 - Support for triangular and square lattices
 - Visualise frustrated magnetism
+- Support for both ferromagnetic and anti-ferromagnetic plots and calculations
 
 ## Installation
 Clone the repository and install the required dependencies:
