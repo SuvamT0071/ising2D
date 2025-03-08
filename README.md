@@ -77,15 +77,6 @@ magnetization = magnetize(grid, temp_range)
 print("Magnetization:", magnetization)
 ```
 
-## Periodic Boundary Conditions (PBC) Implementation
-The repository also provides functions to compute system properties using periodic boundary conditions. Example:
-
-```python
-from isingmetro import compute_energy_PBC
-
-energy_pbc = compute_energy_PBC(grid)
-print("Energy with PBC:", energy_pbc)
-```
 ## Some plots from the code:
 ![square ferro](https://github.com/user-attachments/assets/b81a2e45-a800-4d24-94a6-bb2ea7a3e738)
 ![square anti-ferro](https://github.com/user-attachments/assets/8c184273-d886-44f8-b0b6-a06e45f716e6)
